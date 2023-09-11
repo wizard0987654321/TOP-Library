@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Roboto:wght@300&display=swap');
+
+* {
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     background-color: rgb(238, 235, 235);
 }
@@ -13,4 +20,10 @@ th {
 
 td, th {
     padding: 1rem;
+}
+
+
+
+input {
+    margin: 0.5rem;
 }

@@ -1,12 +1,14 @@
 const myLibrary = [];
 
+// Storing input values in variables
 let title = document.getElementById("bookTitle");
 let author = document.getElementById("bookAuthor");
 let pages = document.getElementById("bookPages");
 
-
+// Storing submit button in a variable
 const submitButton = document.getElementById("addButton");
 
+// Creating function that stores and displays data
 function addBookToLibrary(title, author, pages) {
     title = title.value;
     author = author.value;
@@ -14,20 +16,30 @@ function addBookToLibrary(title, author, pages) {
     let read = document.querySelector('input[name="readInfo"]:checked');
     read = read.value;
 
+    // Storing new book using Book object constructor
     const newBook = new Book(title, author, pages, read);
+    
+    /* Adding newBook object to myLibrary array
+    and displaying it on the screen */
+
     myLibrary.push(newBook);
     displayBook(newBook);
-    console.log(myLibrary);
-    console.log(newBook);
 }
 
+/* Assigning function to the submit button, that
+calls the addBookToLibrary function above */
 
 submitButton.onclick = function(e) {
     e.preventDefault();
     addBookToLibrary(title, author, pages);
 };
 
+/* Creating prototype function that displays 
+books to the screen */
+
 function displayBook(book) {
+
+    // Creating new html elements for displaying content
     const newRow = document.createElement("tr");
     const newTitle = document.createElement("td");
     const newAuthor = document.createElement("td");
@@ -37,6 +49,7 @@ function displayBook(book) {
     const newTD = document.createElement("td");
     const newDelete = document.createElement("button");
 
+    // Updating content of the html elements
     newTitle.textContent = book.title;
     newAuthor.textContent = book.author;
     newPages.textContent = book.pages;
@@ -47,6 +60,9 @@ function displayBook(book) {
 
     newRead.classList.add("readStatus");
 
+    /* Adding elements created above as the child
+    elements of particular tags */
+
     newTD.appendChild(newDelete);
     newReadTD.append(newRead);
 
@@ -56,6 +72,7 @@ function displayBook(book) {
     newRow.appendChild(newReadTD);
     newRow.appendChild(newTD);
 
+    // Displaying  new object as the first row
     const table = document.querySelector("tbody");
     const firstRow = table.querySelector("tr");
 
@@ -65,7 +82,7 @@ function displayBook(book) {
         table.appendChild(newRow);
     }
 
-
+    // Declaring delete function for rows
     const deleteButtons = document.querySelectorAll(".delete");
 
     deleteButtons.forEach(function(button) {
@@ -79,6 +96,9 @@ function displayBook(book) {
 
     const readButtons = document.querySelectorAll(".readStatus");
 
+    /* Declaring function, that changes 
+    read status on the click */
+
     readButtons.forEach(function(button) {
         button.onclick = function(e) {
             if (e.target.textContent == "Read") {
@@ -90,6 +110,7 @@ function displayBook(book) {
     });
 }
 
+// Declaring Book obect constructor
 
 function Book(title, author, pages, read) {
     this.title = title
