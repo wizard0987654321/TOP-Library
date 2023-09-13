@@ -55,6 +55,12 @@ function displayBook(book) {
     newPages.textContent = book.pages;
     newRead.textContent = book.read;
 
+    if (newRead.textContent == "Read"){
+        newRead.style.backgroundColor = "rgb(124, 240, 95)";
+    }else{
+        newRead.style.backgroundColor = "rgb(245, 130, 130)";
+    }
+
     newDelete.textContent = "Delete";
     newDelete.classList.add("delete");
 
@@ -103,8 +109,10 @@ function displayBook(book) {
         button.onclick = function(e) {
             if (e.target.textContent == "Read") {
                 e.target.textContent = "Not Read"
+                e.target.style.backgroundColor = "rgb(245, 130, 130)"
             } else {
                 e.target.textContent = "Read";
+                e.target.style.backgroundColor = "rgb(124, 240, 95)";
             }
         }
     });
