@@ -118,7 +118,7 @@ function displayBook(book) {
     });
 }
 
-// Declaring Book obect constructor
+// Declaring Book object constructor
 
 function Book(title, author, pages, read) {
     this.title = title
