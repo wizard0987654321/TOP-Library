@@ -16,6 +16,11 @@ function addBookToLibrary(title, author, pages) {
     let read = document.querySelector('input[name="readInfo"]:checked');
     read = read.value;
 
+    if (!title || !author || !pages || !read) {
+        alert("Please fill out all required fields");
+        return; // Prevent further execution of the function
+    }
+
     // Storing new book using Book object constructor
     const newBook = new Book(title, author, pages, read);
     
